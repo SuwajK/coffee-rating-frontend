@@ -1,0 +1,7 @@
+.coffeeEquipment form {
+  width: fit-content;
+}
+
+.coffeeEquipment form label {
+  display: block;
+}

@@ -1,0 +1,47 @@
+.header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #CDCDCD;
+  background-color: #a15327;
+}
+
+.logo {
+  font-size: 1.5em;
+  padding: 0 1rem;
+}
+
+.spacing {
+  flex: 1;
+  background-color: lawngreen;
+}
+
+.header nav,
+.header nav ul {
+  margin: 0;
+  height: 100%;
+}
+
+.header nav ul li {
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  height: 100%;
+}
+
+.header nav ul li a:hover {
+  color: #613217;
+}
+
+.header nav ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  color: #CDCDCD;
+  text-decoration: none;
+  cursor: default;
+  height: 100%;
+}

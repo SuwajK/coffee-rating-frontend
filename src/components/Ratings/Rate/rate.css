@@ -1,0 +1,28 @@
+.rate-box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: stretch;
+  justify-items: center;
+  padding: 4px;
+}
+
+.rate {
+  font-size: 1.5vw;
+  transition: .35s;
+}
+
+.rate-unchecked {
+  color: #adadad;
+}
+
+.rate-checked {
+  color: #A15327;
+}
+
+.rate-box:hover .rate-editable {
+  color: #A15327;
+}
+
+.rate-editable:hover ~ .rate-editable {
+  color: #adadad;
+}

@@ -1,0 +1,15 @@
+.loginForm {
+    width: fit-content;
+}
+
+.loginForm p label {
+  display: block;
+}
+
+.loginForm p button {
+    padding: 0.5rem 2rem;
+}
+
+.loginForm p:last-child {
+    text-align: center;
+}
