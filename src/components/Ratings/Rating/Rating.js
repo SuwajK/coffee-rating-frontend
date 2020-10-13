@@ -21,36 +21,36 @@ const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
 
   return (
     <p className='rating' onClick={handleExpand}>
-      <Rate rate={rating} additionalClass={'rating--item__rate'} />
-      <span className='rating--item rating--item__label'>Coffee</span>
-      <span className='rating--item rating--item coffee'>{coffee.brand} {coffee.name}</span>
-      <span className='rating--item rating--item__label'>Coffee dose</span>
-      <span className='rating--item rating--item coffee-dose'>{coffeeDose}g</span>
-      <span className='rating--item rating--item__label'>Water dose</span>
-      <span className='rating--item rating--item water-dose'>{waterDose}g</span>
-      <span className='rating--item rating--item__label'>Brew Time</span>
-      <span className='rating--item rating--item brew-time'>{brewTime}s</span>
+      <Rate rate={rating} additionalClass={'rating__item--rate'} />
+      <span className='rating__item rating__item--label'>Coffee</span>
+      <span className='rating__item rating__item coffee'>{coffee.brand} {coffee.name}</span>
+      <span className='rating__item rating__item--label'>Coffee dose</span>
+      <span className='rating__item rating__item coffee-dose'>{coffeeDose}g</span>
+      <span className='rating__item rating__item--label'>Water dose</span>
+      <span className='rating__item rating__item water-dose'>{waterDose}g</span>
+      <span className='rating__item rating__item--label'>Brew Time</span>
+      <span className='rating__item rating__item brew-time'>{brewTime}s</span>
       {isExpanded && <>
         <span
-          className='rating--item rating--item__hidden rating--item__label rating--item__extended-label'>
+          className='rating__item rating__item--hidden rating__item--label rating__item--extended-label'>
           Preinfusion dose
           </span>
         <span
-          className='rating--item rating--item__hidden rating--item__preinfusion-dose'>
+          className='rating__item rating__item--hidden rating__item--preinfusion-dose'>
           {preinfusionDose}g
           </span>
         <span
-          className='rating--item rating--item__hidden rating--item__label rating--item__extended-label'>
+          className='rating__item rating__item--hidden rating__item--label rating__item--extended-label'>
           Preinfusion time
         </span>
         <span
-          className='rating--item rating--item__hidden rating--item__preinfusion-time'>{preinfusionTime}s
+          className='rating__item rating__item--hidden rating__item--preinfusion-time'>{preinfusionTime}s
         </span>
       </>
       }
       <FontAwesomeIcon
             icon={faTrashAlt}
-            className={`rating--item__delete-button fas fa-trash-alt`}
+            className={`rating__item--delete-button fas fa-trash-alt`}
             onClick={handleDeleteButtonClick}
         />
     </p>

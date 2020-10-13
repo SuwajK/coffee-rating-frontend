@@ -32,23 +32,23 @@ const Ratings = () => {
 
 
 
-        {showAddRating && <AddRating className='ratings--addRating'/>}
+        {showAddRating && <AddRating className='ratings__addRating'/>}
       <div className='ratings'>
-        {/* <p classname='ratings--head'> */}
-        <span className='ratings--item ratings--rate'>Rating</span>
-        <span className='ratings--item ratings--coffee-brand'>Coffee</span>
-        {/* <span className='ratings--item ratings--coffee-name'>Coffee Name</span> */}
-        <span className='ratings--item ratings--coffee-dose'>Coffee Dose</span>
-        {/* <span className='ratings--item ratings--preinfusion-dose'>Preinfusion Dose</span>
-            <span className='ratings--item ratings--preinfusion-time'>Preinfusion Time</span> */}
-        <span className='ratings--item ratings--water-dose'>Water Dose</span>
-        <span className='ratings--item ratings--brew-time'>Brew Time</span>
+        {/* <p classname='ratings__head'> */}
+        <span className='ratings__item ratings__rate'>Rating</span>
+        <span className='ratings__item ratings__coffee-brand'>Coffee</span>
+        {/* <span className='ratings__item ratings__coffee-name'>Coffee Name</span> */}
+        <span className='ratings__item ratings__coffee-dose'>Coffee Dose</span>
+        {/* <span className='ratings__item ratings__preinfusion-dose'>Preinfusion Dose</span>
+            <span className='ratings__item ratings__preinfusion-time'>Preinfusion Time</span> */}
+        <span className='ratings__item ratings__water-dose'>Water Dose</span>
+        <span className='ratings__item ratings__brew-time'>Brew Time</span>
 
-        <button className='ratings--item ratings--add' onClick={handleAddRatingButtonClick}>
+        <button className='ratings__item ratings__add' onClick={handleAddRatingButtonClick}>
           {showAddRating ? '-' : '+'}
         </button>
         {/* </p> */}
-        {/* <p className='ratings--body'> */}
+        {/* <p className='ratings__body'> */}
         {ratings && ratings.map((data, index) =>
           <Rating deleteItem={handleDeleteItem} key={index} {...data} />)
         }

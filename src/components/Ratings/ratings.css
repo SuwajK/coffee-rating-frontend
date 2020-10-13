@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 600px) {
-  .ratings--item {
+  .ratings__item {
     display: none;
   }
 }

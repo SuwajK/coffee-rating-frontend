@@ -11,9 +11,9 @@ const Header = () => {
   return (
 
     <div className='header'>
-      <div className='logo'>Coffee Ratings</div>
-      <div className='spacing'> </div>
-      <nav className='nav'>
+      <div className='header__logo'>Coffee Ratings</div>
+      <div className='header__spacing'> </div>
+      <nav className='header__nav'>
         <ul>
           <li><a href='./#'>Rating List</a></li>
           <li><a href='./#'>Coffee List</a></li>
@@ -21,7 +21,7 @@ const Header = () => {
           <li><a href='./#'>Grinders List</a></li>
         </ul>
       </nav>
-        <User id={id} token={token} username={username}/>
+        {/* <User id={id} token={token} username={username}/> */}
     </div>
 
   )
