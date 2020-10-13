@@ -1,40 +1,20 @@
-/* label {
-  font-weight: bold;
-  font-size: smaller;
-  display: block;
-  color: #848484;
-  display: none;
-} */
-
 .addRating {
-  width: 100%;
   display: grid;
   border-collapse: collapse;
-  min-width: 80%;
-  grid-template-columns: repeat(8, 1fr) auto;
-  justify-items: center;
+  grid-template-columns: 1fr 2fr;
+  justify-items: start;
   align-items: center;
 }
 
-.addRating td {
-  /* text-align: left; */
-  /* width: 100px;
-  height: 100px; */
-}
-/* 
-.addRating td:last-child {
-  max-width: 30px;
-  min-width: 40px;
-} */
-
-.addRating td input {
-  width: 100%;
+.addRating input {
+  margin: 5px 0px;
+  width: 80%;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
-.addRating td button {
+.addRating button {
   display: inline-block;
   margin: 3px;
   padding: 2px;
@@ -42,8 +22,31 @@
   background-color: #A15327;
   color: #CDCDCD;
   border-radius: 3px;
-  /* font-size: 1em; */
   font-weight: bold;
   cursor: pointer;
   outline: none;
+} 
+
+@media (max-width: 600px) {
+
+  .addRating {
+    justify-items: center;
+  }
+  .addRating input,
+  .addRating label{
+    padding: 5px 2px;
+    text-align: center;
+    grid-column: span 2;
+    align-items: center;
+
+  }
+  
+  .addRating span {
+    grid-column: span 2;  
+    align-items: center;
+  }
+
+  .addRating button {
+    grid-column: span 2;
+  }
 }

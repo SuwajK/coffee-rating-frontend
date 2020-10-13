@@ -13,6 +13,10 @@ const Ratings = () => {
     setShowAddRating(prevState => !prevState)
   }
 
+  const handleDeleteItem = (id) => {
+    console.log('Delete rating', id)
+  }
+
 
   useEffect(() => {
     getRatingDataFromApi().then(data => setRatings(data))
@@ -28,29 +32,28 @@ const Ratings = () => {
 
 
 
-      <table className='ratings'>
-        <thead>
-          <tr>
-            <th><span className='item coffee-brand'>Coffee Brand</span></th>
-            <th><span className='item coffee-name'>Coffee Name</span></th>
-            <th><span className='item coffee-dose'>Coffee Dose</span></th>
-            <th><span className='item preinfusion-dose'>Preinfusion Dose</span></th>
-            <th><span className='item preinfusion-time'>Preinfusion Time</span></th>
-            <th><span className='item water-dose'>Water Dose</span></th>
-            <th><span className='item brew-time'>Brew Time</span></th>
-            <th><span className='item rating'>Rating</span></th>
-            <th>
-              <button className='item add' onClick={handleAddRatingButtonClick}>
-                {showAddRating ? '-' : '+'}
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {showAddRating && <AddRating />}
-          {ratings && ratings.map((data, index) => <Rating {...data} key={index} />)}
-        </tbody>
-      </table>
+        {showAddRating && <AddRating className='ratings--addRating'/>}
+      <div className='ratings'>
+        {/* <p classname='ratings--head'> */}
+        <span className='ratings--item ratings--rate'>Rating</span>
+        <span className='ratings--item ratings--coffee-brand'>Coffee</span>
+        {/* <span className='ratings--item ratings--coffee-name'>Coffee Name</span> */}
+        <span className='ratings--item ratings--coffee-dose'>Coffee Dose</span>
+        {/* <span className='ratings--item ratings--preinfusion-dose'>Preinfusion Dose</span>
+            <span className='ratings--item ratings--preinfusion-time'>Preinfusion Time</span> */}
+        <span className='ratings--item ratings--water-dose'>Water Dose</span>
+        <span className='ratings--item ratings--brew-time'>Brew Time</span>
+
+        <button className='ratings--item ratings--add' onClick={handleAddRatingButtonClick}>
+          {showAddRating ? '-' : '+'}
+        </button>
+        {/* </p> */}
+        {/* <p className='ratings--body'> */}
+        {ratings && ratings.map((data, index) =>
+          <Rating deleteItem={handleDeleteItem} key={index} {...data} />)
+        }
+        {/* </p> */}
+      </div>
     </>
   )
 }

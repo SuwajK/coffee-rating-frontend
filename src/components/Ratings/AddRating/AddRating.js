@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Rate from '../Rate'
 import './addrating.css'
 import { sendRatingToApi } from '../../../api/Api'
@@ -46,26 +46,27 @@ const AddRating = () => {
   }
 
   return (
-    <tr className='addRating'>
-      {/* <td><Field name='coffeeMachineId' type='text' /></td> */}
+    <p className='addRating'>
+      {/* <Field name='coffeeMachineId' type='text' /> */}
       {/* <label htmlFor='coffeeMachineId'>Coffee machine ID</label> */}
-      <td><input name='coffeeBrand' type='text' onChange={handleInput} value={state.coffee.brand} /></td>
-      {/* <label htmlFor='coffee.brand'>Coffee brand</label> */}
-      <td><input name='coffeeName' type='text' onChange={handleInput} value={state.coffee.name} /></td>
-      {/* <label htmlFor='coffee.name'>Coffee name</label> */}
-      <td><input name='coffeeDose' type='text' onChange={handleInput} value={state.coffeeDose} /></td>
-      {/* <label htmlFor='coffeeDose'>Coffee dose</label> */}
-      <td><input name='preinfusionDose' type='text' onChange={handleInput} value={state.preinfusionDose} /></td>
-      {/* <label htmlFor='preinfusionDose'>Preinfusion dose</label> */}
-      <td><input name='preinfusionTime' type='text' onChange={handleInput} value={state.preinfusionTime} /></td>
-      {/* <label htmlFor='preinfusionTime'>Preinfusion Time</label> */}
-      <td><input name='waterDose' type='text' onChange={handleInput} value={state.waterDose} /></td>
-      {/* <label htmlFor='waterDose'>Water dose</label> */}
-      <td><input name='brewTime' type='text' onChange={handleInput} value={state.brewTime} /></td>
-      {/* <label htmlFor='brewTime'>Brew time</label> */}
-      <td><Rate rate={state.rating} setRate={setRate} editable={true} /></td>
-      <td><button onClick={() => sendRatingToApi(state)}>Add</button></td>
-    </tr>
+      <label htmlFor='coffee.brand'>Coffee brand</label>
+      <input name='coffeeBrand' type='text' onChange={handleInput} value={state.coffee.brand} />
+      <label htmlFor='coffee.name'>Coffee name</label>
+      <input name='coffeeName' type='text' onChange={handleInput} value={state.coffee.name} />
+      <label htmlFor='coffeeDose'>Coffee dose</label>
+      <input name='coffeeDose' type='text' onChange={handleInput} value={state.coffeeDose} />
+      <label htmlFor='preinfusionDose'>Preinfusion dose</label>
+      <input name='preinfusionDose' type='text' onChange={handleInput} value={state.preinfusionDose} />
+      <label htmlFor='preinfusionTime'>Preinfusion Time</label>
+      <input name='preinfusionTime' type='text' onChange={handleInput} value={state.preinfusionTime} />
+      <label htmlFor='waterDose'>Water dose</label>
+      <input name='waterDose' type='text' onChange={handleInput} value={state.waterDose} />
+      <label htmlFor='brewTime'>Brew time</label>
+      <input name='brewTime' type='text' onChange={handleInput} value={state.brewTime} />
+      <label htmlFor='brewTime'>Rating</label>
+      <Rate rate={state.rating} setRate={setRate} editable={true} />
+      <button onClick={() => sendRatingToApi(state)}>Add</button>
+    </p>
   )
 }
 
