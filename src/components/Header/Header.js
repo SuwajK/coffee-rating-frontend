@@ -3,6 +3,7 @@ import User from '../User'
 import './header.css'
 
 import { UserContext } from '../../contexts/UserContextProvider'
+import Menu from '../Menu/Menu'
 
 const Header = () => {
 
@@ -12,16 +13,8 @@ const Header = () => {
 
     <div className='header'>
       <div className='header__logo'>Coffee Ratings</div>
-      <div className='header__spacing'> </div>
-      <nav className='header__nav'>
-        <ul>
-          <li><a href='./#'>Rating List</a></li>
-          <li><a href='./#'>Coffee List</a></li>
-          <li><a href='./#'>Coffee Machines List</a></li>
-          <li><a href='./#'>Grinders List</a></li>
-        </ul>
-      </nav>
-        {/* <User id={id} token={token} username={username}/> */}
+        <Menu/>
+         <User id={id} token={token} username={username}/>
     </div>
 
   )

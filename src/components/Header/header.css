@@ -2,44 +2,19 @@
   height: 50px;
   width: 100%;
   display: grid;
+  grid-template-columns: 1fr auto;
   /* flex-direction: row; */
   /* align-items: center; */
   color: #CDCDCD;
-  background-color: #a15327;
+  background-color: #A15327;
 }
 
 .header__logo {
+  align-self: center;
   font-size: 1.5em;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.header__nav,
-.header__nav ul {
-  margin: 0;
-  height: 100%;
-}
-
-.header__nav ul li {
-  list-style: none;
-  margin: 0;
-  display: inline-block;
-  height: 100%;
-}
-
-.header__nav ul li a:hover {
-  color: #613217;
-}
-
-.header__nav ul li a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 1rem;
-  color: #CDCDCD;
-  text-decoration: none;
-  cursor: default;
-  height: 100%;
-}
 
 
 @media (max-width: 600px) {
