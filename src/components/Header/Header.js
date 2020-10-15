@@ -1,6 +1,9 @@
-import React  from 'react'
+import React from 'react'
 import './header.css'
-
+import {
+  BrowserRouter as Router,
+  Link
+} from 'react-router-dom'
 import Menu from '../Menu/Menu'
 
 const Header = () => {
@@ -9,8 +12,10 @@ const Header = () => {
   return (
 
     <div className='header'>
-      <div className='header__logo'>Coffee Ratings</div>
-        <Menu/>
+      <Router>
+        <Link to='/' className='header__logo'>Coffee Ratings</Link>
+      </Router>
+      <Menu/>
     </div>
 
   )

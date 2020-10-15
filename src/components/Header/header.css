@@ -10,9 +10,11 @@
 }
 
 .header__logo {
+  text-decoration: none;
   align-self: center;
   font-size: 1.5em;
   padding: 0.5rem 1rem;
+  color: #CDCDCD;
 }
 
 
