@@ -18,8 +18,8 @@ function App() {
   return (
     <div className="App">
       <UserContextProvider>
-        <Header/>
         <Router>
+        <Header/>
           <Switch>
             <Route path='/ratings'>
               <Ratings />
@@ -33,12 +33,10 @@ function App() {
             <Route path='/grinders'>
               <Grinders />
             </Route>
-            <Route path='/'>
+            <Route exact path='/'>
               <Ratings />
             </Route>
           </Switch>
-
-
         </Router>
       </UserContextProvider>
     </div>

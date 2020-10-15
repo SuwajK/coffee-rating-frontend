@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import {
-    BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 import './menu.css'
@@ -23,7 +22,6 @@ const Menu = () => {
       <button className='hamburger-menu-button' onClick={handleHamburgerButtonClick}>
         <span className='hamburger-menu-button__bars' />
       </button>
-    <Router>
       <nav className='nav'>
         <ul className={`${isActiveClass()}`}>
           <li><Link to='/ratings'>Ratings</Link></li>
@@ -32,7 +30,6 @@ const Menu = () => {
           <li><Link to='/grinders'>Grinders</Link></li>
         </ul>
       </nav>
-    </Router>
     </>
   )
 }
