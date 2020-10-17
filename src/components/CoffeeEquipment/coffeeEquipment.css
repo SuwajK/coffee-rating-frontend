@@ -1,7 +1,30 @@
 .coffeeEquipment form {
   width: fit-content;
+  padding: 1rem;
 }
 
 .coffeeEquipment form label {
   display: block;
+}
+
+.coffeeEquipment--list__header span {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.coffeeEquipment--list__row,
+.coffeeEquipment--list__header{
+  display: grid;
+  grid-template-columns: 30px repeat(2, 1fr);
+  background-color: rgba(161, 83, 39, .2);
+}
+
+.coffeeEquipment--list__row span,
+.coffeeEquipment--list__header span {
+  padding: 10px;
+}
+
+.coffeeEquipment--list__row:nth-child(2n) {
+  background-color: #FFFFFF;
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import {Formik, Form, Field} from 'formik'
 import './coffeeEquipment.css'
 
 
-const CoffeeEquipment = ({ submitFunction, formName, data }) => {
+const CoffeeEquipment = ({submitFunction, formName, data}) => {
 
   const handleSubmit = (params) => {
     submitFunction(params)
@@ -30,26 +30,19 @@ const CoffeeEquipment = ({ submitFunction, formName, data }) => {
       </Formik>
 
       <div className='coffeeEquipment--list'>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Brand</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {console.log('CoffeeEquipment', data)}
-            {data.map(
-              row =>
-                <tr key={row.id}>
-                  <td>{row.id}</td>
-                  <td>{row.brand}</td>
-                  <td>{row.name}</td>
-                </tr>
-            )}
-          </tbody>
-        </table>
+        <div className='coffeeEquipment--list__header'>
+          <span>ID</span>
+          <span>Brand</span>
+          <span>Name</span>
+        </div>
+        {/*{console.log('CoffeeEquipment', data)}*/}
+        {data && data.map(
+          row => <div className='coffeeEquipment--list__row' key={row.id}>
+            <span>{row.id}</span>
+            <span>{row.brand}</span>
+            <span>{row.name}</span>
+          </div>
+        )}
 
       </div>
     </div>
@@ -57,14 +50,10 @@ const CoffeeEquipment = ({ submitFunction, formName, data }) => {
 }
 
 CoffeeEquipment.defaultProps = {
-  submitFunction: (e) => 
+  submitFunction: (e) =>
     console.log('Provide function submitFunction. Call params:', e),
   formName: 'Provide formName property',
-  data: [
-    { id: 'ID1', brand: 'Brand1', name: 'Name1' },
-    { id: 'ID2', brand: 'Brand2', name: 'Name2' },
-    { id: 'ID3', brand: 'Brand3', name: 'Name3' }
-  ]
+  data: []
 }
 
 export default CoffeeEquipment

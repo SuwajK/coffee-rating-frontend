@@ -1,0 +1,27 @@
+.grinder--details {
+    grid-column: span 3;
+    padding: 0 2rem;
+}
+
+
+.grinder--details__header,
+.grinder--details__element {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.grinder--details__header {
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgba(161, 83, 39, .3);
+}
+
+.grinder--details__element:nth-child(2n) {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.grinder--details__element:nth-child(2n-1) {
+    background-color: rgba(161, 83, 39, .2);
+}

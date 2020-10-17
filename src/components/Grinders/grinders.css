@@ -1,0 +1,29 @@
+.grinders form {
+    width: fit-content;
+    padding: 1rem;
+}
+
+.grinders form label {
+    display: block;
+}
+.grinders--list__header span {
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.grinders--list__row>div,
+.grinders--list__header {
+    display: grid;
+    grid-template-columns: 30px repeat(2, 1fr);
+    background-color: rgba(161, 83, 39, .2);
+}
+
+.grinders--list__row span,
+.grinders--list__header span {
+    padding: 10px;
+}
+
+.grinders--list__row>div:nth-child(2n-1) {
+    background-color: #FFFFFF;
+}

@@ -88,6 +88,7 @@
 
   .nav ul li a {
     color: #cdcdcd;
+    width: 100%;
   }
 
   .nav .active {
