@@ -175,6 +175,24 @@ const sendGrinderDataToApi = async (grinder) => {
   }
 }
 
+const deleteGrinderInApiById = async (grinderId) => {
+  if (grinderId) {
+  fetch(
+    `${Config.apiUrl}/grinders/${grinderId}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json',},
+    })
+    .then(resp => {
+      if (!resp.ok) {
+        throw Error('Error deleting grinder machine')
+      }
+    })
+    .catch(err => console.error(err))
+}
+
+}
+
 export {
   sendRatingToApi,
   getRatingDataFromApi,
@@ -187,4 +205,5 @@ export {
   deleteCoffeeMachineInApiById,
   getGrinderDataFromApi,
   sendGrinderDataToApi,
+  deleteGrinderInApiById,
 }

@@ -1,19 +1,35 @@
 import React, {useState} from 'react'
 import './grinder.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 
-const Grinder = ({id, brand, model, grinderGrinds}) => {
+const Grinder = ({id, brand, model, grinderGrinds, deleteFunction}) => {
 
   const [isExpanded, setIsExpanded] = useState(false)
 
   const handleExpand = () => {
     setIsExpanded(prevState => !prevState)
   }
+
+  const handleDelete = (e) => {
+    e.stopPropagation()
+    if(deleteFunction){
+      deleteFunction(id)
+    }
+  }
+
   return (
     <>
       <div className='grinder' key={id} onClick={handleExpand}>
         <span>{id}</span>
         <span>{brand}</span>
         <span>{model}</span>
+        <span>
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                className={`rating__item--delete-button fas fa-trash-alt`}
+                onClick={handleDelete}
+              /></span>
         {isExpanded && (
           <div className='grinder--details'>
             <div className='grinder--details__header'>

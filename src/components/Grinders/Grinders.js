@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { getGrinderDataFromApi, sendGrinderDataToApi } from '../../api/Api'
+import React, {useEffect, useState} from 'react'
+import {deleteGrinderInApiById, getGrinderDataFromApi, sendGrinderDataToApi} from '../../api/Api'
 import Grinder from './Grinder/Grinder'
 import './grinders.css'
 import {Field, Form, Formik} from "formik";
 
 const Grinders = (props) => {
 
-  const [data, setData] = useState([{ id: 0 }])
+  const [data, setData] = useState([{id: 0}])
 
 
   useEffect(() => {
     getGrinderDataFromApi().then(resp => {
-      setData(resp)
-    }
+        setData(resp)
+      }
     )
   }, [])
 
@@ -20,6 +20,13 @@ const Grinders = (props) => {
   const addGrinder = (grinder) => {
     sendGrinderDataToApi(grinder)
       .then(c => setData(prevState => [...prevState, c]))
+  }
+
+  const deleteGrinder = (grinderId) => {
+    deleteGrinderInApiById(grinderId)
+      .then(() => {
+        setData(prevState => prevState.filter(obj => obj.id !== grinderId))
+      })
   }
 
 
@@ -42,14 +49,14 @@ const Grinders = (props) => {
 
         </Form>
       </Formik>
-        <div className='grinders--list__header'>
-          <span>ID</span>
-          <span>Brand</span>
-          <span>Model</span>
-        </div>
-        <div className='grinders--list__row'>
-          {data.map(g => <Grinder key={g.id} {...g} />)}
-        </div>
+      <div className='grinders--list__header'>
+        <span>ID</span>
+        <span>Brand</span>
+        <span>Model</span>
+      </div>
+      <div className='grinders--list__row'>
+        {data.map(g => <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>)}
+      </div>
 
 
     </div>
