@@ -21,7 +21,7 @@ const CoffeeList = (props) => {
     deleteCoffeeInApiById(coffeeId)
       .then(() => setData(
         prevState => prevState.filter(obj => obj.id !== coffeeId))
-      );
+      )
   }
 
   return (

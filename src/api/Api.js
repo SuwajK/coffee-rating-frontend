@@ -127,6 +127,23 @@ const sendCoffeeMachineDataToApi = async (coffee) => {
   }
 }
 
+const deleteCoffeeMachineInApiById = async (coffeeMachineId) => {
+  if (coffeeMachineId) {
+    fetch(
+      `${Config.apiUrl}/coffeemachines/${coffeeMachineId}`, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {'Content-Type': 'application/json',},
+      })
+      .then(resp => {
+        if (!resp.ok) {
+          throw Error('Error deleting coffee machine')
+        }
+      })
+      .catch(err => console.error(err))
+  }
+}
+
 const getGrinderDataFromApi = async () => {
   const response = await fetch(`${Config.apiUrl}/grinders`, {
     method: 'GET',
@@ -167,6 +184,7 @@ export {
   deleteCoffeeInApiById,
   getCoffeeMachineDataFromApi,
   sendCoffeeMachineDataToApi,
+  deleteCoffeeMachineInApiById,
   getGrinderDataFromApi,
   sendGrinderDataToApi,
 }

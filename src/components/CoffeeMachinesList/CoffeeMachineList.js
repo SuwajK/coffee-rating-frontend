@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CoffeeEquipment from '../CoffeeEquipment'
-import { getCoffeeMachineDataFromApi, sendCoffeeMachineDataToApi } from '../../api/Api'
+import {deleteCoffeeMachineInApiById, getCoffeeMachineDataFromApi, sendCoffeeMachineDataToApi} from '../../api/Api'
 
 const CoffeeMachineList = (props) => {
 
@@ -17,9 +17,17 @@ const CoffeeMachineList = (props) => {
       .then(c => setData(prevState => [...prevState, c]))
   }
 
+  const deleteCoffeeMachine = (coffeeMachineId) => {
+    deleteCoffeeMachineInApiById(coffeeMachineId)
+      .then(() => setData(
+        prevState => prevState.filter(obj => obj.id !== coffeeMachineId))
+      )
+  }
+
   return (
     <CoffeeEquipment
       submitFunction={addCoffeeMachine}
+      deleteFunction={deleteCoffeeMachine}
       formName='Coffee Machine List'
       data={data} />
   )

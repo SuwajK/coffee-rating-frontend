@@ -13,9 +13,9 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
     }
   }
 
-  const handleDelete = (coffeeId) => {
+  const handleDelete = (equipmentId) => {
     if(deleteFunction){
-      deleteFunction(coffeeId)
+      deleteFunction(equipmentId)
     }
   }
 
