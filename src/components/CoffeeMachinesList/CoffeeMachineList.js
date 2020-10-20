@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import CoffeeEquipment from '../CoffeeEquipment'
-import { getCoffeeMachineDataFromApi, sendCoffeeMachineDataToApi } from '../../api/Api'
+import {getCoffeeMachineDataFromApi, sendCoffeeMachineDataToApi} from '../../api/Api'
 
 const CoffeeMachineList = (props) => {
 
-  const [data, setData] = useState([{ id: 0 }])
+  const [data, setData] = useState([])
 
 
   useEffect(() => {
@@ -17,11 +17,21 @@ const CoffeeMachineList = (props) => {
       .then(c => setData(prevState => [...prevState, c]))
   }
 
+  const prepareDataToRender = () => {
+    return data.map(row => {
+      return {
+        id: row.id,
+        brand: row.brand,
+        name: row.model,
+      }
+    })
+  }
+
   return (
     <CoffeeEquipment
       submitFunction={addCoffeeMachine}
       formName='Coffee Machine List'
-      data={data} />
+      data={prepareDataToRender()}/>
   )
 }
 
