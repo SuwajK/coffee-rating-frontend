@@ -1,5 +1,4 @@
 .header {
-  height: 50px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -17,8 +16,3 @@
   color: #CDCDCD;
 }
 
-
-
-@media (max-width: 600px) {
-
-}
