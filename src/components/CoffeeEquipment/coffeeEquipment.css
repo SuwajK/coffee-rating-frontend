@@ -16,7 +16,7 @@
 .coffeeEquipment--list__row,
 .coffeeEquipment--list__header{
   display: grid;
-  grid-template-columns: 30px repeat(2, 1fr);
+  grid-template-columns: 30px repeat(2, 1fr) 40px;
   background-color: rgba(161, 83, 39, .2);
 }
 

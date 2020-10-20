@@ -1,12 +1,22 @@
 import React from 'react'
 import {Formik, Form, Field} from 'formik'
 import './coffeeEquipment.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 
 
-const CoffeeEquipment = ({submitFunction, formName, data}) => {
+const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
 
   const handleSubmit = (params) => {
-    submitFunction(params)
+    if (submitFunction) {
+      submitFunction(params)
+    }
+  }
+
+  const handleDelete = (coffeeId) => {
+    if(deleteFunction){
+      deleteFunction(coffeeId)
+    }
   }
 
   return (
@@ -41,6 +51,12 @@ const CoffeeEquipment = ({submitFunction, formName, data}) => {
             <span>{row.id}</span>
             <span>{row.brand}</span>
             <span>{row.name}</span>
+            <span>
+              <FontAwesomeIcon
+              icon={faTrashAlt}
+              className={`rating__item--delete-button fas fa-trash-alt`}
+              onClick={() => handleDelete(row.id)}
+            /></span>
           </div>
         )}
 
