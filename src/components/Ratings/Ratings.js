@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Rating from './Rating'
 import AddRating from './AddRating'
 import './ratings.css'
-import { getRatingDataFromApi } from '../../api/Api'
+import { getRatingDataFromApi, deleteRatingInApiById } from '../../api/Api'
 
 const Ratings = () => {
 
@@ -14,7 +14,10 @@ const Ratings = () => {
   }
 
   const handleDeleteItem = (id) => {
-    console.log('Delete rating', id)
+    deleteRatingInApiById(id)
+      .then(() => {
+        setRatings(prevState => prevState.filter(obj => obj.id !== id))
+      });
   }
 
 
