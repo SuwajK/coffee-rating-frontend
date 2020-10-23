@@ -2,13 +2,13 @@
   grid-column: 1 / 7;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr) 40px;
+  grid-template-columns: repeat(5, 1fr) 50px;
   border-collapse: collapse;
   min-width: 80%;
   justify-items: center;
   align-items: center;
   margin: 0;
-  padding: 1em;
+  padding: 1em .5em;
 }
 
 .rating__item--label {

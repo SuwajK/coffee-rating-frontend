@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {deleteGrinderInApiById, getGrinderDataFromApi, sendGrinderDataToApi} from '../../api/Api'
 import Grinder from './Grinder/Grinder'
+import Button from '../reusable/Button/Button'
 import './grinders.css'
 import {Field, Form, Formik} from "formik";
 
@@ -41,11 +42,9 @@ const Grinders = (props) => {
       >
         <Form>
           <h1>Grinders</h1>
-          {/* <label htmlFor='brand'>Brand</label> */}
           <Field name='brand' type='text' placeholder='Brand'/>
-          {/* <label htmlFor='name'>Name</label> */}
           <Field name='name' type='text' placeholder='Name'/>
-          <button type='submit'>Add</button>
+          <Button className='light' type='submit'>Add</Button>
 
         </Form>
       </Formik>

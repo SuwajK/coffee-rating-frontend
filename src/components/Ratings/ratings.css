@@ -2,15 +2,22 @@
   padding: 10px;
   display: grid;
   border-collapse: collapse;
-  grid-template-columns: repeat(5, 1fr) 40px;
+  grid-template-columns: repeat(5, 1fr) 50px;
   justify-items: center;
   align-items: center;
   background-color: rgba(161, 83, 39, .2);
 }
 
+
 @media (max-width: 600px) {
   .ratings__item {
     display: none;
+  }
+
+  .ratings__add {
+    display: block;
+    grid-column: span 6;
+    align-content: center;
   }
 }
 .ratings > span {

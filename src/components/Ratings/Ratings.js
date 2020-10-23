@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Rating from './Rating'
 import AddRating from './AddRating'
+import Button from '../reusable/Button/Button'
 import './ratings.css'
 import { getRatingDataFromApi, deleteRatingInApiById } from '../../api/Api'
 
@@ -29,12 +30,6 @@ const Ratings = () => {
 
   return (
     <>
-      {/* <button onClick={() => {
-        getDataFromApi().then(data => setRatings(data))
-      }}>GetDataFromApi</button> */}
-
-
-
         {showAddRating && <AddRating className='ratings__addRating'/>}
       <div className='ratings'>
         {/* <p classname='ratings__head'> */}
@@ -47,15 +42,12 @@ const Ratings = () => {
         <span className='ratings__item ratings__water-dose'>Water Dose</span>
         <span className='ratings__item ratings__brew-time'>Brew Time</span>
 
-        <button className='ratings__item ratings__add' onClick={handleAddRatingButtonClick}>
+        <Button className='ratings__item ratings__add dark' onClick={handleAddRatingButtonClick}>
           {showAddRating ? '-' : '+'}
-        </button>
-        {/* </p> */}
-        {/* <p className='ratings__body'> */}
+        </Button>
         {ratings && ratings.map((data, index) =>
           <Rating deleteItem={handleDeleteItem} key={index} {...data} />)
         }
-        {/* </p> */}
       </div>
     </>
   )

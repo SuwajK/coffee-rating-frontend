@@ -1,5 +1,6 @@
 import React from 'react'
 import {Formik, Form, Field} from 'formik'
+import Button from '../reusable/Button/Button'
 import './coffeeEquipment.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
@@ -34,7 +35,7 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
           <Field name='brand' type='text' placeholder='Brand'/>
           {/* <label htmlFor='name'>Name</label> */}
           <Field name='name' type='text' placeholder='Name'/>
-          <button type='submit'>Add</button>
+          <Button className='light' type='submit'>Add</Button>
 
         </Form>
       </Formik>
@@ -45,7 +46,6 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
           <span>Brand</span>
           <span>Name</span>
         </div>
-        {/*{console.log('CoffeeEquipment', data)}*/}
         {data && data.map(
           row => <div className='coffeeEquipment--list__row' key={row.id}>
             <span>{row.id}</span>

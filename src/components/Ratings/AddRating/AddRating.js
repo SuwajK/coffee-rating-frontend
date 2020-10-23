@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Rate from '../Rate'
+import Button from '../../reusable/Button/Button'
 import './addrating.css'
 import { sendRatingToApi } from '../../../api/Api'
 
@@ -65,7 +66,7 @@ const AddRating = () => {
       <input name='brewTime' type='text' onChange={handleInput} value={state.brewTime} />
       <label htmlFor='brewTime'>Rating</label>
       <Rate rate={state.rating} setRate={setRate} editable={true} />
-      <button onClick={() => sendRatingToApi(state)}>Add</button>
+      <Button className='light' onClick={() => sendRatingToApi(state)}>Add</Button>
     </p>
   )
 }
