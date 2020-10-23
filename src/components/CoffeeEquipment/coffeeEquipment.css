@@ -1,11 +1,20 @@
 .coffeeEquipment form {
-  width: fit-content;
+  width: auto;
   padding: 1rem;
 }
 
 .coffeeEquipment form label {
   display: block;
 }
+
+.coffeeEquipment form input {
+  padding: 1em .5em;
+  margin: 1em 1em;
+}
+
+/*.coffeeEquipment form button {*/
+/*  grid-column: span 2;*/
+/*}*/
 
 .coffeeEquipment--list__header span {
   padding: 1rem;
@@ -14,7 +23,7 @@
 }
 
 .coffeeEquipment--list__row,
-.coffeeEquipment--list__header{
+.coffeeEquipment--list__header {
   display: grid;
   grid-template-columns: 30px repeat(2, 1fr) 40px;
   background-color: rgba(161, 83, 39, .2);
@@ -27,4 +36,16 @@
 
 .coffeeEquipment--list__row:nth-child(2n) {
   background-color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+  .coffeeEquipment form input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .coffeeEquipment form {
+      text-align: center;
+  }
 }
