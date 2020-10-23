@@ -5,7 +5,7 @@ import Button from '../reusable/Button/Button'
 import './grinders.css'
 import {Field, Form, Formik} from "formik";
 
-const Grinders = (props) => {
+const Grinders = () => {
 
   const [data, setData] = useState([{id: 0}])
 
@@ -30,6 +30,7 @@ const Grinders = (props) => {
       })
   }
 
+  const validateRequiredField = (value) => value ? '' : 'This field is required'
 
   return (
     <div className='grinders'>
@@ -40,13 +41,17 @@ const Grinders = (props) => {
         }}
         onSubmit={addGrinder}
       >
+        {({errors, touched}) =>
         <Form>
           <h1>Grinders</h1>
-          <Field name='brand' type='text' placeholder='Brand'/>
-          <Field name='model' type='text' placeholder='Model'/>
+          <Field name='brand' type='text' placeholder='Brand' validate={validateRequiredField}/>
+          {errors.brand && touched.brand && <span>{errors.brand}</span>}
+          <Field name='model' type='text' placeholder='Model' validate={validateRequiredField}/>
+          {errors.model && touched.model && <span>{errors.model}</span>}
           <Button className='light' type='submit'>Add</Button>
 
         </Form>
+        }
       </Formik>
       <div className='grinders--list__header'>
         <span>ID</span>

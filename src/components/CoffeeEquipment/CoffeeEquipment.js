@@ -20,6 +20,8 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
     }
   }
 
+  const validateRequiredField = (value) => value ? '' : 'This field is required'
+
   return (
     <div className='coffeeEquipment'>
       <Formik
@@ -29,15 +31,19 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
         }}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <h1>{formName}</h1>
-          {/* <label htmlFor='brand'>Brand</label> */}
-          <Field name='brand' type='text' placeholder='Brand'/>
-          {/* <label htmlFor='name'>Name</label> */}
-          <Field name='name' type='text' placeholder='Name'/>
-          <Button className='light' type='submit'>Add</Button>
+        {({errors, touched}) =>
+          <Form>
+            <h1>{formName}</h1>
+            {/* <label htmlFor='brand'>Brand</label> */}
+            <Field name='brand' type='text' placeholder='Brand' validate={validateRequiredField}/>
+            {errors.brand && touched.brand && <span>{errors.brand}</span>}
+            {/* <label htmlFor='name'>Name</label> */}
+            <Field name='name' type='text' placeholder='Name' validate={validateRequiredField}/>
+            {errors.name && touched.name && <span>{errors.name}</span>}
+            <Button className='light' type='submit'>Add</Button>
 
-        </Form>
+          </Form>
+        }
       </Formik>
 
       <div className='coffeeEquipment--list'>

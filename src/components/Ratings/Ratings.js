@@ -10,7 +10,7 @@ const Ratings = () => {
   const [ratings, setRatings] = useState([])
   const [showAddRating, setShowAddRating] = useState(false)
 
-  const handleAddRatingButtonClick = (e) => {
+  const handleAddRatingButtonClick = () => {
     setShowAddRating(prevState => !prevState)
   }
 
@@ -25,12 +25,15 @@ const Ratings = () => {
   useEffect(() => {
     getRatingDataFromApi().then(data => setRatings(data))
   }, []
-
   )
+
+  const addRating = (rating) => {
+    setRatings(prevState => [...prevState, rating])
+  }
 
   return (
     <>
-        {showAddRating && <AddRating className='ratings__addRating'/>}
+        {showAddRating && <AddRating className='ratings__addRating' addItem={addRating} />}
       <div className='ratings'>
         {/* <p classname='ratings__head'> */}
         <span className='ratings__item ratings__rate'>Rating</span>
