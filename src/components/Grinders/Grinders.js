@@ -36,14 +36,14 @@ const Grinders = (props) => {
       <Formik
         initialValues={{
           brand: '',
-          name: ''
+          model: ''
         }}
         onSubmit={addGrinder}
       >
         <Form>
           <h1>Grinders</h1>
           <Field name='brand' type='text' placeholder='Brand'/>
-          <Field name='name' type='text' placeholder='Name'/>
+          <Field name='model' type='text' placeholder='Model'/>
           <Button className='light' type='submit'>Add</Button>
 
         </Form>
@@ -54,7 +54,7 @@ const Grinders = (props) => {
         <span>Model</span>
       </div>
       <div className='grinders--list__row'>
-        {data.map(g => <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>)}
+        {data && data.map(g => <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>)}
       </div>
 
 
