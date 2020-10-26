@@ -1,15 +1,18 @@
 import React from 'react'
 import {Formik, Form, Field} from 'formik'
-import Button from '../reusable/Button/Button'
+// import Button from '../reusable/Button/Button'
 import './coffeeEquipment.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {TextField} from "formik-material-ui";
+import Button from "@material-ui/core/Button";
 
 
 const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
 
-  const handleSubmit = (params) => {
+  const handleSubmit = (params, {resetForm}) => {
     if (submitFunction) {
+      resetForm()
       submitFunction(params)
     }
   }
@@ -31,16 +34,24 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
         }}
         onSubmit={handleSubmit}
       >
-        {({errors, touched}) =>
+        {() =>
           <Form>
             <h1>{formName}</h1>
-            {/* <label htmlFor='brand'>Brand</label> */}
-            <Field name='brand' type='text' placeholder='Brand' validate={validateRequiredField}/>
-            {errors.brand && touched.brand && <span>{errors.brand}</span>}
-            {/* <label htmlFor='name'>Name</label> */}
-            <Field name='name' type='text' placeholder='Name' validate={validateRequiredField}/>
-            {errors.name && touched.name && <span>{errors.name}</span>}
-            <Button className='light' type='submit'>Add</Button>
+            <Field
+              component={TextField}
+              name='brand'
+              type='text'
+              label='Brand'
+              validate={validateRequiredField}
+            />
+            <Field
+              component={TextField}
+              name='name'
+              type='text'
+              label='Name'
+              validate={validateRequiredField}
+            />
+            <Button type='submit'>Add</Button>
 
           </Form>
         }

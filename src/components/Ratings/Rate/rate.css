@@ -1,13 +1,11 @@
 .rate-box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  align-items: stretch;
   justify-items: center;
-  padding: 4px;
 }
 
 .rate {
-  font-size: max(3vh, 16pt);
+  font-size: max(2vh, 10pt);
   transition: .35s;
 }
 

@@ -1,47 +1,51 @@
+.grinders {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
 .grinders form {
-    width: auto;
-    padding: 1rem;
+  width: auto;
+  padding: 1rem;
 }
 
-.grinders form label {
-    display: block;
+.grinders > form > div {
+  display: block;
 }
 
-.grinders form input {
-    padding: 1em .5em;
-    margin: 1em 1em;
+.grinders__list__header span {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.grinders--list__header span {
-    padding: 1rem;
-    font-weight: bold;
-    font-size: 1.2rem;
+.grinders__list__row > div,
+.grinders__list__header {
+  display: grid;
+  grid-template-columns: 30px repeat(2, 1fr) 50px;
+  background-color: rgba(161, 83, 39, .2);
 }
 
-.grinders--list__row>div,
-.grinders--list__header {
-    display: grid;
-    grid-template-columns: 30px repeat(2, 1fr) 40px;
-    background-color: rgba(161, 83, 39, .2);
+.grinders__list__row span,
+.grinders__list__header span {
+  padding: 1rem;
 }
 
-.grinders--list__row span,
-.grinders--list__header span {
-    padding: 10px;
-}
-
-.grinders--list__row>div:nth-child(2n-1) {
-    background-color: #FFFFFF;
+.grinders__list__row > div:nth-child(2n-1) {
+  background-color: #FFFFFF;
 }
 
 @media (max-width: 600px) {
-    .grinders form input {
-        display: block;
-        width: 80%;
-        margin: 10px auto;
-    }
+  .grinders {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 
-    .grinders form {
-        text-align: center;
-    }
+  .grinders > form {
+    display: block;
+    padding: 0;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+  }
+
 }

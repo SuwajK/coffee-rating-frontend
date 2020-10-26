@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import Rating from './Rating'
 import AddRating from './AddRating'
-import Button from '../reusable/Button/Button'
 import './ratings.css'
-import { getRatingDataFromApi, deleteRatingInApiById } from '../../api/Api'
+import {getRatingDataFromApi, deleteRatingInApiById} from '../../api/Api'
 
 const Ratings = () => {
 
   const [ratings, setRatings] = useState([])
-  const [showAddRating, setShowAddRating] = useState(false)
-
-  const handleAddRatingButtonClick = () => {
-    setShowAddRating(prevState => !prevState)
-  }
 
   const handleDeleteItem = (id) => {
     deleteRatingInApiById(id)
@@ -23,8 +17,8 @@ const Ratings = () => {
 
 
   useEffect(() => {
-    getRatingDataFromApi().then(data => setRatings(data))
-  }, []
+      getRatingDataFromApi().then(data => setRatings(data))
+    }, []
   )
 
   const addRating = (rating) => {
@@ -32,27 +26,27 @@ const Ratings = () => {
   }
 
   return (
-    <>
-        {showAddRating && <AddRating className='ratings__addRating' addItem={addRating} />}
-      <div className='ratings'>
-        {/* <p classname='ratings__head'> */}
-        <span className='ratings__item ratings__rate'>Rating</span>
-        <span className='ratings__item ratings__coffee-brand'>Coffee</span>
-        {/* <span className='ratings__item ratings__coffee-name'>Coffee Name</span> */}
-        <span className='ratings__item ratings__coffee-dose'>Coffee Dose</span>
-        {/* <span className='ratings__item ratings__preinfusion-dose'>Preinfusion Dose</span>
-            <span className='ratings__item ratings__preinfusion-time'>Preinfusion Time</span> */}
-        <span className='ratings__item ratings__water-dose'>Water Dose</span>
-        <span className='ratings__item ratings__brew-time'>Brew Time</span>
-
-        <Button className='ratings__item ratings__add dark' onClick={handleAddRatingButtonClick}>
-          {showAddRating ? '-' : '+'}
-        </Button>
-        {ratings && ratings.map((data, index) =>
-          <Rating deleteItem={handleDeleteItem} key={index} {...data} />)
-        }
+    <div className={'ratings'}>
+      <div>
+        <h1>Ratings</h1>
+        {<AddRating addItem={addRating}/>}
       </div>
-    </>
+
+      <div className='ratings__list'>
+        <div className='ratings__list__header'>
+          <span className='ratings__list--item ratings__list__rate'>Rating</span>
+          <span className='ratings__list--item ratings__list__coffee-brand'>Coffee</span>
+          <span className='ratings__list--item ratings__list__coffee-dose'>Coffee Dose</span>
+          <span className='ratings__list--item ratings__list__water-dose'>Water Dose</span>
+          <span className='ratings__list--item ratings__list__brew-time'>Brew Time</span>
+        </div>
+        {ratings && ratings.map((data, index) =>
+          <div className='ratings__list__row' key={index}>
+            <Rating deleteItem={handleDeleteItem} {...data} />
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 

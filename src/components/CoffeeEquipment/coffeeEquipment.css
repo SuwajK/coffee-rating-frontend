@@ -1,20 +1,16 @@
+.coffeeEquipment {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
 .coffeeEquipment form {
   width: auto;
   padding: 1rem;
 }
 
-.coffeeEquipment form label {
+.coffeeEquipment > form > div {
   display: block;
 }
-
-.coffeeEquipment form input {
-  padding: 1em .5em;
-  margin: 1em 1em;
-}
-
-/*.coffeeEquipment form button {*/
-/*  grid-column: span 2;*/
-/*}*/
 
 .coffeeEquipment--list__header span {
   padding: 1rem;
@@ -25,13 +21,13 @@
 .coffeeEquipment--list__row,
 .coffeeEquipment--list__header {
   display: grid;
-  grid-template-columns: 30px repeat(2, 1fr) 40px;
+  grid-template-columns: 30px repeat(2, 1fr) 50px;
   background-color: rgba(161, 83, 39, .2);
 }
 
 .coffeeEquipment--list__row span,
 .coffeeEquipment--list__header span {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .coffeeEquipment--list__row:nth-child(2n) {
@@ -39,13 +35,18 @@
 }
 
 @media (max-width: 600px) {
-  .coffeeEquipment form input {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
+  .coffeeEquipment {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
-  .coffeeEquipment form {
-      text-align: center;
+  .coffeeEquipment > form {
+    display: block;
+    padding: 0;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
   }
+
+
 }

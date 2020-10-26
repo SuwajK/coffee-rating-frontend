@@ -1,40 +1,24 @@
 .addRating {
   display: grid;
-  border-collapse: collapse;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   justify-items: start;
-  align-items: center;
 }
 
-.addRating input {
-  margin: 5px 0;
-  width: 80%;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.addRating > .rate-box {
+  margin: 1.5rem 0;
 }
-
 
 @media (max-width: 600px) {
 
   .addRating {
-    justify-items: center;
-  }
-  .addRating input,
-  .addRating label{
-    padding: 5px 2px;
+    display: block;
+    padding: 0;
+    margin: 10px;
     text-align: center;
-    grid-column: span 2;
-    align-items: center;
-  }
-  
-  .addRating span {
-    grid-column: span 2;  
-    align-items: center;
   }
 
-  .addRating button{
-    grid-column: span 2;
+  .addRating > div {
+    display: block;
   }
 
 }

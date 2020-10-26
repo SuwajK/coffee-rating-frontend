@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CoffeeEquipment from '../CoffeeEquipment'
 import { getCoffeeDataFromApi, sendCoffeeDataToApi, deleteCoffeeInApiById } from '../../api/Api'
 
-const CoffeeList = (props) => {
+const CoffeeList = () => {
 
   const [data, setData] = useState([])
 
@@ -28,7 +28,7 @@ const CoffeeList = (props) => {
     <CoffeeEquipment
       submitFunction={addCoffee}
       deleteFunction={deleteCoffee}
-      formName='Coffee List'
+      formName='Coffees'
       data={data} />
   )
 }

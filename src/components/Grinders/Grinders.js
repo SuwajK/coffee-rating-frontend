@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {deleteGrinderInApiById, getGrinderDataFromApi, sendGrinderDataToApi} from '../../api/Api'
 import Grinder from './Grinder/Grinder'
-import Button from '../reusable/Button/Button'
 import './grinders.css'
 import {Field, Form, Formik} from "formik";
+import Button from "@material-ui/core/Button";
+import {TextField} from "formik-material-ui";
 
 const Grinders = () => {
 
@@ -18,9 +19,10 @@ const Grinders = () => {
   }, [])
 
 
-  const addGrinder = (grinder) => {
+  const addGrinder = (grinder, {resetForm}) => {
     sendGrinderDataToApi(grinder)
       .then(c => setData(prevState => [...prevState, c]))
+      .then(resetForm())
   }
 
   const deleteGrinder = (grinderId) => {
@@ -41,25 +43,38 @@ const Grinders = () => {
         }}
         onSubmit={addGrinder}
       >
-        {({errors, touched}) =>
+        {() =>
         <Form>
           <h1>Grinders</h1>
-          <Field name='brand' type='text' placeholder='Brand' validate={validateRequiredField}/>
-          {errors.brand && touched.brand && <span>{errors.brand}</span>}
-          <Field name='model' type='text' placeholder='Model' validate={validateRequiredField}/>
-          {errors.model && touched.model && <span>{errors.model}</span>}
-          <Button className='light' type='submit'>Add</Button>
+          <Field
+            component={TextField}
+            name='brand'
+            type='text'
+            label='Brand'
+            validate={validateRequiredField}/>
+          <Field
+            component={TextField}
+            name='model'
+            type='text'
+            label='Model'
+            validate={validateRequiredField}/>
+          <Button type='submit'>Add</Button>
 
         </Form>
         }
       </Formik>
-      <div className='grinders--list__header'>
+      <div className='grinders__list'>
+      <div className='grinders__list__header'>
         <span>ID</span>
         <span>Brand</span>
         <span>Model</span>
       </div>
-      <div className='grinders--list__row'>
-        {data && data.map(g => <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>)}
+
+        {data && data.map(g =>
+          <div className='grinders__list__row'>
+            <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>
+          </div>)
+        }
       </div>
 
 

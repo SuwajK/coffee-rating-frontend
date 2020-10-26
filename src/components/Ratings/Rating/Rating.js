@@ -10,7 +10,7 @@ const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
 
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const handleExpand = (e) => {
+  const handleExpand = () => {
     setIsExpanded(state => !state)
   }
 
@@ -32,19 +32,20 @@ const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
       <span className='rating__item rating__item brew-time'>{brewTime}s</span>
       {isExpanded && <>
         <span
-          className='rating__item rating__item--hidden rating__item--label rating__item--extended-label'>
+          className='rating__item rating__item--hidden rating__item--hidden--label rating__item--label rating__item--extended-label'>
           Preinfusion dose
           </span>
         <span
-          className='rating__item rating__item--hidden rating__item--preinfusion-dose'>
+          className='rating__item rating__item--hidden rating__item--hidden--value rating__item--preinfusion-dose'>
           {preinfusionDose}g
           </span>
         <span
-          className='rating__item rating__item--hidden rating__item--label rating__item--extended-label'>
+          className='rating__item rating__item--hidden rating__item--hidden--label rating__item--label rating__item--extended-label'>
           Preinfusion time
         </span>
         <span
-          className='rating__item rating__item--hidden rating__item--preinfusion-time'>{preinfusionTime}s
+          className='rating__item rating__item--hidden rating__item--hidden--value rating__item--preinfusion-time'>
+          {preinfusionTime}s
         </span>
       </>
       }
