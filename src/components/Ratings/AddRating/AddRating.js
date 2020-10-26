@@ -35,7 +35,7 @@ const AddRating = ({addItem}) => {
       onSubmit={handleSubmit}
     >
 
-      {() => (
+      {({values, setFieldValue}) => (
         <Form className='addRating'>
           {/* <Field name='coffeeMachineId' type='text' /> */}
           {/* <label htmlFor='coffeeMachineId'>Coffee machine ID</label> */}
