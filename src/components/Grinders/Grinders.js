@@ -51,12 +51,14 @@ const Grinders = () => {
             name='brand'
             type='text'
             label='Brand'
+            fullWidth
             validate={validateRequiredField}/>
           <Field
             component={TextField}
             name='model'
             type='text'
             label='Model'
+            fullWidth
             validate={validateRequiredField}/>
           <Button type='submit'>Add</Button>
 

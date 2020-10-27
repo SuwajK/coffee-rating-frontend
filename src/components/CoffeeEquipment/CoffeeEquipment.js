@@ -41,6 +41,7 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
               component={TextField}
               name='brand'
               type='text'
+              fullWidth
               label='Brand'
               validate={validateRequiredField}
             />
@@ -48,6 +49,7 @@ const CoffeeEquipment = ({submitFunction, deleteFunction, formName, data}) => {
               component={TextField}
               name='name'
               type='text'
+              fullWidth
               label='Name'
               validate={validateRequiredField}
             />

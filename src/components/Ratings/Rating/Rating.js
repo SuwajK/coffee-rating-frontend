@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Rate from '../Rate'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import './rating.css'
 
-const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
-  preinfusionTime, waterDose, brewTime, rating, sweetness, bitterness,
-  additional }) => {
+const Rating = ({
+                  deleteItem, id, coffee, coffeeDose, preinfusionDose,
+                  preinfusionTime, waterDose, brewTime, rating, sweetness, bitterness,
+                  additional, additionalClass
+                }) => {
 
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -20,8 +22,8 @@ const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
   }
 
   return (
-    <p className='rating' onClick={handleExpand}>
-      <Rate rate={rating} additionalClass={'rating__item--rate'} />
+    <p className={`rating ${additionalClass}`} onClick={handleExpand}>
+      <Rate rate={rating} additionalClass={'rating__item--rate'}/>
       <span className='rating__item rating__item--label'>Coffee</span>
       <span className='rating__item rating__item coffee'>{coffee.brand} {coffee.name}</span>
       <span className='rating__item rating__item--label'>Coffee dose</span>
@@ -50,27 +52,26 @@ const Rating = ({ deleteItem, id, coffee, coffeeDose, preinfusionDose,
       </>
       }
       <FontAwesomeIcon
-            icon={faTrashAlt}
-            className={`rating__item--delete-button fas fa-trash-alt`}
-            onClick={handleDeleteButtonClick}
-        />
+        icon={faTrashAlt}
+        className={`rating__item--delete-button fas fa-trash-alt`}
+        onClick={handleDeleteButtonClick}
+      />
     </p>
   )
 }
 
 Rating.defaultProps = {
-  ratings: [{
-    coffee: {
-      brand: 'Coffee brand',
-      name: 'Coffee name',
-    },
-    coffeeDose: 0.00,
-    preinfusionDose: 0.00,
-    preinfusionTime: 0.00,
-    waterDose: 0.00,
-    brewTime: 0.00,
-    rating: 0,
-  }]
+  coffee: {
+    brand: 'Coffee brand',
+    name: 'Coffee name',
+  },
+  coffeeDose: 0.00,
+  preinfusionDose: 0.00,
+  preinfusionTime: 0.00,
+  waterDose: 0.00,
+  brewTime: 0.00,
+  rating: 0,
+  additionalClass: ''
 }
 
 export default Rating
