@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   justify-items: start;
+  padding: 0 1em 1em;
 }
 
 .addRating > .rate-box {
@@ -21,4 +22,7 @@
     display: block;
   }
 
+  /*.addRating > .rate-box {*/
+  /*  margin: 1.5rem 3rem;*/
+  /*}*/
 }

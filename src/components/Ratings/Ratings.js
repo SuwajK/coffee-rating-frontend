@@ -41,9 +41,7 @@ const Ratings = () => {
           <span className='ratings__list--item ratings__list__brew-time'>Brew Time</span>
         </div>
         {ratings && ratings.map((data, index) =>
-          <div className='ratings__list__row' key={index}>
-            <Rating deleteItem={handleDeleteItem} {...data} />
-          </div>
+            <Rating deleteItem={handleDeleteItem} additionalClass='ratings__list__row' key={index} {...data} />
         )}
       </div>
     </div>

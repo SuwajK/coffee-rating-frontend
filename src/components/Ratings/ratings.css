@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+.ratings > div > h1 {
+  padding: 1rem 1rem 0;
+}
+
 .ratings__list__header,
 .ratings__list__row {
   display: grid;
@@ -20,6 +24,9 @@
   padding: 1rem 0;
 }
 
+.ratings__list__row > span {
+  padding: 0 1rem;
+}
 .ratings__list__header > span {
   padding: 1rem;
   font-weight: bold;
@@ -38,6 +45,11 @@
 
   .ratings__list__header {
     display: none;
+  }
+
+  .ratings__list__row {
+    grid-column: span 3;
+    justify-items: center;
   }
 
   .ratings__list > span {
