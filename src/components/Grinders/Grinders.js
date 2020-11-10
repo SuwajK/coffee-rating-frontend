@@ -73,8 +73,8 @@ const Grinders = () => {
       </div>
 
         {data && data.map(g =>
-          <div className='grinders__list__row'>
-            <Grinder key={g.id} {...g} deleteFunction={deleteGrinder}/>
+          <div className='grinders__list__row' key={g.id} >
+            <Grinder {...g} deleteFunction={deleteGrinder}/>
           </div>)
         }
       </div>
