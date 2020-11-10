@@ -1,196 +1,85 @@
 import Config from '../Config'
 
-const sendRatingToApi = async (rating) => {
-  if (rating) {
-    const response = fetch(
-      `${Config.apiUrl}/ratings`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify(rating),
-      })
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json()
-        }
-        throw Error('Error adding rating')
-      })
-      .catch(err => console.error(err))
-    return response
+const callApi = async (url, method, requestBody) => {
+  let body = (requestBody) ? JSON.stringify(requestBody) : null
+  return await fetch(url, {
+    method: method,
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json'},
+    body
+  })
+    .then(resp => {
+      if (resp.ok) {
+        return resp.text()
+      } else {
+        throw Error('Call api error')
+      }
+    })
+    .then(resp => resp.length ? JSON.parse(resp) : {})
+    .catch(err => console.error('Fetch error: ', err))
+}
+const getDataFromApi = (nodeURL) => {
+  return callApi(`${Config.apiUrl}/${nodeURL}`, 'GET', null)
+}
+
+const sendDataToApi = (nodeURL, data) => {
+  if (data) {
+    return callApi(`${Config.apiUrl}/${nodeURL}`, 'POST', data)
   }
+}
+
+const deleteDataInApi = (nodeURL, itemId) => {
+  if (itemId) {
+    return callApi(`${Config.apiUrl}/${nodeURL}/${itemId}`, 'DELETE', null)
+  }
+}
+
+const sendRatingToApi = async (rating) => {
+  return sendDataToApi('ratings', rating)
 }
 
 const getRatingDataFromApi = async () => {
-  const response = await fetch(`${Config.apiUrl}/ratings`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json',},
-  })
-    .then(resp => resp.json())
-    .catch(err => console.error('Fetch error: ', err))
-  return response
+  return getDataFromApi('ratings')
 }
 
 const deleteRatingInApiById = async (ratingId) => {
-  if (ratingId) {
-    fetch(
-      `${Config.apiUrl}/ratings/${ratingId}`, {
-        method: 'DELETE',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-      })
-      .then(resp => {
-        if (!resp.ok) {
-          throw Error('Error deleting rating')
-        }
-      })
-      .catch(err => console.error(err))
-  }
+  return deleteDataInApi('ratings', ratingId)
 }
 
 const getCoffeeDataFromApi = async () => {
-  const response = await fetch(`${Config.apiUrl}/coffees`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json',},
-  })
-    .then(resp => resp.json())
-    .catch(err => console.error('Fetch error: ', err))
-  return response
+  return getDataFromApi('coffees')
 }
 
 const sendCoffeeDataToApi = async (coffee) => {
-  if (coffee) {
-    const response = fetch(
-      `${Config.apiUrl}/coffees`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify(coffee),
-      })
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json()
-        }
-        throw Error('Error adding coffee')
-      })
-      .catch(err => console.error(err))
-    return response
-  }
+  return sendDataToApi('coffees', coffee)
 }
 
 const deleteCoffeeInApiById = async (coffeeId) => {
-  if (coffeeId) {
-    fetch(
-      `${Config.apiUrl}/coffees/${coffeeId}`, {
-        method: 'DELETE',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-      })
-      .then(resp => {
-        if (!resp.ok) {
-          throw Error('Error deleting coffee')
-        }
-      })
-      .catch(err => console.error(err))
-  }
+  return deleteDataInApi('coffees', coffeeId)
 }
 
 const getCoffeeMachineDataFromApi = async () => {
-  const response = await fetch(`${Config.apiUrl}/coffeemachines`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json',},
-  })
-    .then(resp => resp.json())
-    .catch(err => console.error('Fetch error: ', err))
-  return response
+  return getDataFromApi('coffeemachines')
 }
 
-const sendCoffeeMachineDataToApi = async (coffee) => {
-  if (coffee) {
-    const response = fetch(
-      `${Config.apiUrl}/coffeemachines`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify(coffee),
-      })
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json()
-        }
-        throw Error('Error adding coffee')
-      })
-      .catch(err => console.error(err))
-    return response
-  }
+const sendCoffeeMachineDataToApi = async (coffeeMachine) => {
+  return sendDataToApi('coffeemachines', coffeeMachine)
 }
 
 const deleteCoffeeMachineInApiById = async (coffeeMachineId) => {
-  if (coffeeMachineId) {
-    fetch(
-      `${Config.apiUrl}/coffeemachines/${coffeeMachineId}`, {
-        method: 'DELETE',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-      })
-      .then(resp => {
-        if (!resp.ok) {
-          throw Error('Error deleting coffee machine')
-        }
-      })
-      .catch(err => console.error(err))
-  }
+  return deleteDataInApi('coffeemachines', coffeeMachineId)
 }
 
 const getGrinderDataFromApi = async () => {
-  const response = await fetch(`${Config.apiUrl}/grinders`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json',},
-  })
-    .then(resp => resp.json())
-    .catch(err => console.error('Fetch error: ', err))
-  return response
+  return getDataFromApi('grinders')
 }
 
 const sendGrinderDataToApi = async (grinder) => {
-  if (grinder) {
-    const response = fetch(
-      `${Config.apiUrl}/grinders`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json',},
-        body: JSON.stringify(grinder),
-      })
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json()
-        }
-        throw Error('Error adding grinder')
-      })
-      .catch(err => console.error(err))
-    return response
-  }
+  return sendDataToApi('grinders', grinder)
 }
 
 const deleteGrinderInApiById = async (grinderId) => {
-  if (grinderId) {
-  fetch(
-    `${Config.apiUrl}/grinders/${grinderId}`, {
-      method: 'DELETE',
-      mode: 'cors',
-      headers: {'Content-Type': 'application/json',},
-    })
-    .then(resp => {
-      if (!resp.ok) {
-        throw Error('Error deleting grinder machine')
-      }
-    })
-    .catch(err => console.error(err))
-}
-
+  return deleteDataInApi('grinders', grinderId)
 }
 
 export {
