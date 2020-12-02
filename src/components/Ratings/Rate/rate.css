@@ -5,7 +5,7 @@
 }
 
 .rate {
-  font-size: max(2vh, 10pt);
+  font-size: max(1rem, 10pt);
   transition: .35s;
 }
 
