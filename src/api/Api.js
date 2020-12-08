@@ -82,6 +82,10 @@ const deleteGrinderInApiById = async (grinderId) => {
   return deleteDataInApi('grinders', grinderId)
 }
 
+const getBrewMethodsFromApi = async () => {
+  return getDataFromApi('methods')
+}
+
 export {
   sendRatingToApi,
   getRatingDataFromApi,
@@ -95,4 +99,5 @@ export {
   getGrinderDataFromApi,
   sendGrinderDataToApi,
   deleteGrinderInApiById,
+  getBrewMethodsFromApi,
 }

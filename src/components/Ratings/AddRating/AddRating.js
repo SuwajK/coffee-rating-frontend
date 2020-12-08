@@ -2,17 +2,17 @@ import React from 'react'
 import Rate from '../Rate'
 import './addrating.css'
 import {sendRatingToApi} from '../../../api/Api'
+import {getBrewMethods} from '../../../Utils/brewMethods'
 import {Field, Form, Formik} from "formik";
 import {TextField} from "formik-material-ui";
 import {TextField as MaterialTextField} from '@material-ui/core';
 import {createFilterOptions} from '@material-ui/lab/Autocomplete';
 import Button from "@material-ui/core/Button";
 import {Autocomplete} from "formik-material-ui-lab";
+import FormikRadioGroup from "../../reusable/FormikRadioGroup";
 
 const AddRating = ({addItem}) => {
-
-  const handleSubmit = (data, {resetForm}) => {
-    console.log(data)
+    const handleSubmit = (data, {resetForm}) => {
     sendRatingToApi(data)
       .then(item => addItem(item))
       .then(resetForm())
@@ -40,6 +40,7 @@ const AddRating = ({addItem}) => {
     <Formik
       initialValues={{
         coffeeMachineId: 1,
+        brewMethodId: 1,
         coffee: {
           brand: '',
           name: '',
@@ -58,6 +59,11 @@ const AddRating = ({addItem}) => {
         <Form className='addRating'>
           {/*<Field name='coffeeMachineId' type='text' />*/}
           {/*<label htmlFor='coffeeMachineId'>Coffee machine ID</label>*/}
+          <Field
+            component={FormikRadioGroup}
+            options={getBrewMethods()}
+            name='brewMethodId'
+          />
           <Field
             component={TextField}
             name='coffee.brand'
