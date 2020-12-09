@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom'
 import {UserContextProvider} from './contexts/UserContextProvider';
 import CoffeeList from "./components/CoffeeList";
-import CoffeeMachineList from "./components/CoffeeMachinesList";
 import Grinders from "./components/Grinders";
 
 
@@ -26,9 +25,6 @@ function App() {
             </Route>
             <Route path='/coffees'>
               <CoffeeList />
-            </Route>
-            <Route path='/coffeemachines'>
-              <CoffeeMachineList />
             </Route>
             <Route path='/grinders'>
               <Grinders />
