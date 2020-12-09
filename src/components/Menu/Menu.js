@@ -26,7 +26,6 @@ const Menu = () => {
         <ul className={`${isActiveClass()}`}>
           <li><Link to='/ratings'>Ratings</Link></li>
           <li><Link to='/coffees'>Coffees</Link></li>
-          <li><Link to='/coffeemachines'>Coffee Machines</Link></li>
           <li><Link to='/grinders'>Grinders</Link></li>
         </ul>
       </nav>
