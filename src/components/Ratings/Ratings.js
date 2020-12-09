@@ -35,13 +35,14 @@ const Ratings = () => {
       <div className='ratings__list'>
         <div className='ratings__list__header'>
           <span className='ratings__list--item ratings__list__rate'>Rating</span>
+          <span className='ratings__list--item ratings__list__coffee-brand'>Method</span>
           <span className='ratings__list--item ratings__list__coffee-brand'>Coffee</span>
           <span className='ratings__list--item ratings__list__coffee-dose'>Coffee Dose</span>
           <span className='ratings__list--item ratings__list__water-dose'>Water Dose</span>
           <span className='ratings__list--item ratings__list__brew-time'>Brew Time</span>
         </div>
         {ratings && ratings.map((data, index) =>
-            <Rating deleteItem={handleDeleteItem} additionalClass='ratings__list__row' key={index} {...data} />
+            <Rating deleteItem={handleDeleteItem} additionalClass='ratings__list__row' key={index} {...data}/>
         )}
       </div>
     </div>
