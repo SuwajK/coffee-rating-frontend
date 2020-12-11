@@ -3,12 +3,27 @@ import Rating from './Rating'
 import AddRating from './AddRating'
 import './ratings.css'
 import {getRatingDataFromApi, deleteRatingInApiById} from '../../api/Api'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faAngleDown} from "@fortawesome/free-solid-svg-icons"
+import styled, {css} from 'styled-components'
+
+
+const RatingIndicator = styled(FontAwesomeIcon)`
+  padding: 0.25em;
+  vertical-align: middle;
+
+opacity: 0.2;
+  ${props => props.active && css`opacity: 0.8;`}
+  ${props => props.asc && css`transform: rotate(180deg);`}
+`
+
 
 const Ratings = () => {
 
-  const [ratings, setRatings] = useState([])
-  const [sortConfig, setSortConfig] = useState({key: null, ascending: false})
 
+  const [ratings, setRatings] = useState([])
+
+  const [sortConfig, setSortConfig] = useState({key: null, ascending: false})
   useEffect(() => {
       getRatingDataFromApi().then(data => {
         setRatings(data);
@@ -28,6 +43,7 @@ const Ratings = () => {
       }))
     }, [sortConfig]
   )
+
 
   const handleDeleteItem = (id) => {
     deleteRatingInApiById(id)
@@ -65,36 +81,72 @@ const Ratings = () => {
             className='ratings__list--item ratings__list__rate'
           >
             Rating
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'rating' && sortConfig.ascending}
+              active={sortConfig.key === 'rating'}
+            />
           </button>
           <button onClick={handleSortItem}
                   value={'brewMethodId'}
                   className='ratings__list--item ratings__list__coffee-brand'
           >
             Method
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'brewMethodId' && sortConfig.ascending}
+              active={sortConfig.key === 'brewMethodId'}
+            />
           </button>
           <button onClick={handleSortItem}
                   value={'coffee'}
                   className='ratings__list--item ratings__list__coffee-brand'
           >
             Coffee
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'coffee' && sortConfig.ascending}
+              active={sortConfig.key === 'coffee'}
+            />
           </button>
           <button onClick={handleSortItem}
                   value={'coffeeDose'}
                   className='ratings__list--item ratings__list__coffee-dose'
           >
             Coffee Dose
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'coffeeDose' && sortConfig.ascending}
+              active={sortConfig.key === 'coffeeDose'}
+            />
           </button>
           <button onClick={handleSortItem}
                   value={'waterDose'}
                   className='ratings__list--item ratings__list__water-dose'
           >
             Water Dose
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'waterDose' && sortConfig.ascending}
+              active={sortConfig.key === 'waterDose'}
+            />
           </button>
           <button onClick={handleSortItem}
                   value={'brewTime'}
                   className='ratings__list--item ratings__list__brew-time'
           >
             Brew Time
+            <RatingIndicator
+              icon={faAngleDown}
+              className={`ratings__list__rate__icon fas fa-angle-down`}
+              asc={sortConfig.key === 'brewTime' && sortConfig.ascending}
+              active={sortConfig.key === 'brewTime'}
+            />
           </button>
           {/*<button><span className='ratings__list--item ratings__list__brew-time'>Brew Time</span></button>*/}
         </div>
