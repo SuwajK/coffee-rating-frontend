@@ -27,8 +27,11 @@
 .ratings__list__row > span {
   padding: 0 1rem;
 }
-.ratings__list__header > span {
-  padding: 1rem;
+.ratings__list__header > button  {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1.5rem 1rem;
   font-weight: bold;
   font-size: 1.2rem;
 }
