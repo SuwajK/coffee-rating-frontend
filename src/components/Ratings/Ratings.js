@@ -77,7 +77,7 @@ const Ratings = () => {
           <FontAwesomeIcon
             icon={icon}
             className={`ratings__list__rate__icon fas fa-angle-down`}
-            flip={asc ? 'vertical' : false}
+            flip={asc ? 'vertical' : null}
           />
         </RatingIndicator>
       </button>
