@@ -5,25 +5,20 @@ import './ratings.css'
 import {getRatingDataFromApi, deleteRatingInApiById} from '../../api/Api'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faAngleDown} from "@fortawesome/free-solid-svg-icons"
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 
+//TODO: Fix coffee sorting
 
-const RatingIndicator = styled(FontAwesomeIcon)`
+const RatingIndicator = styled.span`
   padding: 0.25em;
   vertical-align: middle;
-
-opacity: 0.2;
-  ${props => props.active && css`opacity: 0.8;`}
-  ${props => props.asc && css`transform: rotate(180deg);`}
+  opacity: ${props => props.$active ? '0.8' : '0.2'};
 `
 
-
 const Ratings = () => {
-
-
   const [ratings, setRatings] = useState([])
-
   const [sortConfig, setSortConfig] = useState({key: null, ascending: false})
+
   useEffect(() => {
       getRatingDataFromApi().then(data => {
         setRatings(data);
@@ -43,7 +38,6 @@ const Ratings = () => {
       }))
     }, [sortConfig]
   )
-
 
   const handleDeleteItem = (id) => {
     deleteRatingInApiById(id)
@@ -66,6 +60,30 @@ const Ratings = () => {
     setRatings(prevState => [...prevState, rating])
   }
 
+
+  const TableHeaderItem = ({text, name, icon, handleSortItem, children}) => {
+    const asc = !!(sortConfig.key === name && sortConfig.ascending)
+    return (
+      <button onClick={handleSortItem}
+              value={name}
+              className='ratings__list--item ratings__list__brew-time'
+      >
+        {text}
+        {children}
+        <RatingIndicator
+          $active={sortConfig.key === name}
+          className={`ratings__list__rate__icon fas fa-angle-down`}
+        >
+          <FontAwesomeIcon
+            icon={icon}
+            className={`ratings__list__rate__icon fas fa-angle-down`}
+            flip={asc ? 'vertical' : false}
+          />
+        </RatingIndicator>
+      </button>
+    )
+  }
+
   return (
     <div className={'ratings'}>
       <div>
@@ -75,80 +93,12 @@ const Ratings = () => {
 
       <div className='ratings__list'>
         <div className='ratings__list__header'>
-          <button
-            onClick={handleSortItem}
-            value={'rating'}
-            className='ratings__list--item ratings__list__rate'
-          >
-            Rating
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'rating' && sortConfig.ascending}
-              active={sortConfig.key === 'rating'}
-            />
-          </button>
-          <button onClick={handleSortItem}
-                  value={'brewMethodId'}
-                  className='ratings__list--item ratings__list__coffee-brand'
-          >
-            Method
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'brewMethodId' && sortConfig.ascending}
-              active={sortConfig.key === 'brewMethodId'}
-            />
-          </button>
-          <button onClick={handleSortItem}
-                  value={'coffee'}
-                  className='ratings__list--item ratings__list__coffee-brand'
-          >
-            Coffee
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'coffee' && sortConfig.ascending}
-              active={sortConfig.key === 'coffee'}
-            />
-          </button>
-          <button onClick={handleSortItem}
-                  value={'coffeeDose'}
-                  className='ratings__list--item ratings__list__coffee-dose'
-          >
-            Coffee Dose
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'coffeeDose' && sortConfig.ascending}
-              active={sortConfig.key === 'coffeeDose'}
-            />
-          </button>
-          <button onClick={handleSortItem}
-                  value={'waterDose'}
-                  className='ratings__list--item ratings__list__water-dose'
-          >
-            Water Dose
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'waterDose' && sortConfig.ascending}
-              active={sortConfig.key === 'waterDose'}
-            />
-          </button>
-          <button onClick={handleSortItem}
-                  value={'brewTime'}
-                  className='ratings__list--item ratings__list__brew-time'
-          >
-            Brew Time
-            <RatingIndicator
-              icon={faAngleDown}
-              className={`ratings__list__rate__icon fas fa-angle-down`}
-              asc={sortConfig.key === 'brewTime' && sortConfig.ascending}
-              active={sortConfig.key === 'brewTime'}
-            />
-          </button>
-          {/*<button><span className='ratings__list--item ratings__list__brew-time'>Brew Time</span></button>*/}
+          <TableHeaderItem text='Rating' name='rating' handleSortItem={handleSortItem} icon={faAngleDown}/>
+          <TableHeaderItem text='Method' name='brewMethodId' handleSortItem={handleSortItem} icon={faAngleDown}/>
+          <TableHeaderItem text='Coffee' name='coffee' handleSortItem={handleSortItem} icon={faAngleDown}/>
+          <TableHeaderItem text='Coffee Dose' name='coffeeDose' handleSortItem={handleSortItem} icon={faAngleDown}/>
+          <TableHeaderItem text='Water Dose' name='waterDose' handleSortItem={handleSortItem} icon={faAngleDown}/>
+          <TableHeaderItem text='Brew Time' name='brewTime' handleSortItem={handleSortItem} icon={faAngleDown}/>
         </div>
         {ratings && ratings.map((data, index) =>
           <Rating deleteItem={handleDeleteItem} additionalClass='ratings__list__row' key={index} {...data}/>
