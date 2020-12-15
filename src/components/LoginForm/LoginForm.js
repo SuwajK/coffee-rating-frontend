@@ -1,51 +1,48 @@
-import React, { useState } from 'react'
-import { login } from '../../services/authService'
-import './loginform.css'
-import { Formik, Form, Field } from 'formik'
+import React from 'react'
+import userActions from '../../redux/actions/userActions'
+import './loginForm.css'
+import {Formik, Form, Field} from 'formik'
+import {connect} from 'react-redux'
+import {loginInApi} from "../../redux/operations/userOperations";
 
-const Login = props => {
 
-  const handleLogin = async (e) => {
-    // e.preventDefault()
-    const { username, password } = e
-    console.log(`Logging in... ${username}:${password}`)
+const LoginForm = ({login, logout, isLoggedIn}) => {
+
+  const handleLogin = async ({username, password}) => {
     if (username != null && password != null) {
-      // await login(username, password)
-      // setUsername('')
-      // setPassword('')
+      login({username, password})
     }
   }
 
-  // const handleInput = (e) => {
-  //   const value = e.target.value
-  //   console.log(value)
-  //   switch (e.target.name) {
-  //     case 'login': {
-  //       setUsername(value)
-  //       break
-  //     }
-  //     case 'password': {
-  //       setPassword(value)
-  //       break
-  //     }
-  //     default: {
-  //       console.log(`Login form wrong input: ${e.target.name}`)
-  //     }
-  //   }
-  // }
-
   return (
-    <Formik
-      initialValues={{ username: '', password: '' }}
-      onSubmit={handleLogin}
-    >
-      <Form>
-        <Field name='username' />
-        <Field name='password' />
-        <button type='submit'>Add</button>
-      </Form>
-    </Formik>
+    <>
+      {
+        isLoggedIn
+          ?
+          <button onClick={logout}>Logout</button>
+          :
+          <Formik
+            initialValues={{username: '', password: ''}}
+            onSubmit={handleLogin}
+          >
+            <Form>
+              <Field name='username'/>
+              <Field type='password' name='password'/>
+              <button type='submit'>Login</button>
+            </Form>
+          </Formik>
+      }
+    </>
   )
 }
 
-export default Login
+const mapDispatchToProps = dispatch => ({
+  login: (credentials) => dispatch(loginInApi(credentials)),
+  logout: () => dispatch(userActions.logout())
+})
+
+const mapStatetoProps = (state) => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+export default connect(mapStatetoProps, mapDispatchToProps)(LoginForm)

@@ -10,6 +10,7 @@ import {
 import {UserContextProvider} from './contexts/UserContextProvider';
 import CoffeeList from "./components/CoffeeList";
 import Grinders from "./components/Grinders";
+import LoginForm from "./components/LoginForm";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path='/grinders'>
               <Grinders />
+            </Route>
+            <Route path='/login'>
+              <LoginForm />
             </Route>
             <Route exact path='/'>
               <Ratings />

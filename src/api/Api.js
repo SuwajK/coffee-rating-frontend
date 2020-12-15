@@ -1,5 +1,6 @@
 import Config from '../Config'
 
+//Fetch only response body (removes headers)
 const callApi = async (url, method, requestBody) => {
   let body = (requestBody) ? JSON.stringify(requestBody) : null
   return await fetch(url, {
