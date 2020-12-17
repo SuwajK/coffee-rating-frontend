@@ -4,11 +4,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import './rating.css'
 import {getBrewMethodById} from "../../../Utils/brewMethods";
+import {connect} from 'react-redux'
 
 const Rating = ({
                   deleteItem, id, coffee, coffeeDose, preinfusionDose,
                   preinfusionTime, waterDose, brewTime, rating, brewMethodId, sweetness, bitterness,
-                  additional, additionalClass
+                  additional, additionalClass, isLoggedIn
                 }) => {
 
   const [isExpanded, setIsExpanded] = useState(false)
@@ -27,7 +28,8 @@ const Rating = ({
     <p className={`rating ${additionalClass}`} onClick={handleExpand}>
       <Rate rate={rating} additionalClass={'rating__item--rate'}/>
       <span className='rating__item rating__item--label'>Method</span>
-      <span className='rating__item rating__item coffee-dose'>{brewMethodId && getBrewMethodById(brewMethodId).label}</span>
+      <span
+        className='rating__item rating__item coffee-dose'>{brewMethodId && getBrewMethodById(brewMethodId).label}</span>
       <span className='rating__item rating__item--label'>Coffee</span>
       <span className='rating__item rating__item coffee'>{coffee.brand} {coffee.name}</span>
       <span className='rating__item rating__item--label'>Coffee dose</span>
@@ -55,11 +57,13 @@ const Rating = ({
         </span>
       </>
       }
-      <FontAwesomeIcon
-        icon={faTrashAlt}
-        className={`rating__item--delete-button fas fa-trash-alt`}
-        onClick={handleDeleteButtonClick}
-      />
+      {
+        isLoggedIn && <FontAwesomeIcon
+          icon={faTrashAlt}
+          className={`rating__item--delete-button fas fa-trash-alt`}
+          onClick={handleDeleteButtonClick}
+        />
+      }
     </p>
   )
 }
@@ -79,4 +83,8 @@ Rating.defaultProps = {
   additionalClass: ''
 }
 
-export default Rating
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+export default connect(mapStateToProps)(Rating)

@@ -1,15 +1,7 @@
 .loginForm {
-    width: fit-content;
-}
-
-.loginForm p label {
-  display: block;
-}
-
-.loginForm p button {
-    padding: 0.5rem 2rem;
-}
-
-.loginForm p:last-child {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 40%;
+  max-width: 400px;
 }

@@ -27,6 +27,7 @@ const Menu = () => {
           <li><Link to='/ratings'>Ratings</Link></li>
           <li><Link to='/coffees'>Coffees</Link></li>
           <li><Link to='/grinders'>Grinders</Link></li>
+          <li><Link to='/login'>Login</Link></li>
         </ul>
       </nav>
     </>
